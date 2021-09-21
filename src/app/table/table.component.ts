@@ -18,11 +18,12 @@ import {  Subject, throwError } from 'rxjs';
 })
 export class TableComponent implements OnInit {
 
+  show:boolean=false;
   private menuSub!:Subscription;
   menuUpdated = new Subject<Menu[]>();
   prodUpdated = new Subject<Menu>();
   menu:Menu[]=[];
- 
+  close=true;
 
 
   constructor(public menuService: MenuService,public router:Router ) {
@@ -41,11 +42,11 @@ export class TableComponent implements OnInit {
     this.menuService.getAllMenus().pipe(map((res)=>{
   
       console.log(res)
-  return res.map((menu:{_id:string, title:string, price: string, description: string, URL:string})=>{
+  return res.map((menu:{_id:string, titulo:string, price: string, description: string, URL:string})=>{
   console.log(menu)
   return {
     id:menu._id,
-    title:menu.title,
+    titulo:menu.titulo,
     price:menu.price,
     description:menu.description,
     URL:menu.URL
@@ -65,28 +66,25 @@ export class TableComponent implements OnInit {
   
     }
   
+    delete(id:string){
+
+      this.menuService.delete(id)
+    }
+
+    edit(id: string,titulo: string,descripsion:string,URL: string,price:string){
+      this.menuService.edit(id,titulo,descripsion,URL,price);
+    }
 
 
-    // showMenu(){
+modal(){
 
-    //   this.menuService.getAllMenus().pipe(map((res)=>{
+return this.show=true;
+}
+
+closeModal(){
+ return this.show=false
+  }
     
-    //     console.log(res)
-    // return res.map((menu:{_id:string, title:string, price: string, description: string, URL:string})=>{
-    
-    // return {
-    //   id:menu._id,
-    //   title:menu.title,
-    //   price:menu.price,
-    //   description:menu.description,
-    //   URL:menu.URL
-    // }
-    // })
-    //   })).subscribe((dataT)=>{
-    //     this.menu= dataT;
-    //     this.menuUpdated.next([...this.menu]);
-    //   })
-      
-    // }
+
 
 }

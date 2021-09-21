@@ -52,11 +52,13 @@ export class AuthService {
   }
 
   logout(){
+    
     localStorage.removeItem('token')
     localStorage.removeItem('role')
     this.isAuthenticated=false
     this.authStatusListener.next(false)
     this.router.navigate(['/signin'])
+    
   }
 
   getToken(){

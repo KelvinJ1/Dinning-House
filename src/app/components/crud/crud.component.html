@@ -13,7 +13,7 @@
     </div>
     <input type="text" class="form-control" placeholder="Titulo" aria-label="Titulo" aria-describedby="basic-addon1"
       [(ngModel)]="menuService.selectedMenu.titulo"
-      name="titulo"
+      name="titulo" id="myInput"
     >
   </div>
   
@@ -22,7 +22,7 @@
       <span class="input-group-text">Descripción:</span>
     </div>
     <textarea class="form-control" aria-label="With textarea" [(ngModel)]="menuService.selectedMenu.description"
-        name="description">
+        name="description" id="myInput">
   </textarea>
   </div>
   
@@ -33,7 +33,7 @@
     </div>
     <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3"
     [(ngModel)]="menuService.selectedMenu.URL"
-      name="URL"
+      name="URL" id="myInput"
     >
   </div>
   
@@ -43,7 +43,7 @@
     </div>
     <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"
     [(ngModel)]="menuService.selectedMenu.price"
-    name="price"
+    name="price" id="myInput"
     >
     <div class="input-group-append">
       <span class="input-group-text">.00</span>
@@ -55,9 +55,9 @@
 </div>
 
 
-<div class="botones">
-    <button (click)="adding(add)"   type="button" class="btn btn-success">Agregar</button>
-    <button (click)="show()" type="button" class="btn btn-info">Listar</button>
+<div  class="botones">
+    <button onclick="document.getElementById('myInput').value = ''" (click)="adding(add)" type="button" class="btn btn-success">Agregar</button>
+    <button  (click)="show()" type="button" class="btn btn-info">Listar</button>
 
     <!-- <button type="button" class="btn btn-warning">Warning</button>
     <button type="button" class="btn btn-danger">Danger</button> -->

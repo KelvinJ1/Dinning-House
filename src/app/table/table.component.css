@@ -7,3 +7,9 @@ width: 100%;
 button{
     margin: 2px;
 }
+
+.modal-body{
+
+z-index: 1000;
+
+}
