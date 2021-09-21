@@ -1,0 +1,41 @@
+
+h3{
+    text-align: center;
+}
+
+.container{ 
+padding: 20px;
+width: 100vw;
+height: 100vh;
+
+
+}
+
+.form{
+
+margin-top: 200px;
+ margin: auto;
+width: 40%;
+
+}
+
+.botones{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: auto;
+    margin-top: 20px;
+    width: 100%;
+}
+
+
+button{
+
+   margin: 5px;
+    width: 150px;
+    height: 40px;   
+
+}
+
+
+
