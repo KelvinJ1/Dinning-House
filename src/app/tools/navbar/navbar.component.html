@@ -1,13 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="#">Restaurant</a>
+       <h2> <a class="navbar-brand" href="#">Dinning House</a></h2>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav ml-auto" >
-        <a *ngIf="  role==1" class="nav-link" routerLink="/home">Home</a>
-        <a *ngIf=" role==1" class="nav-link" routerLink="/crud">Administrar</a>
+        <a *ngIf="isAdmin() " class="nav-link" routerLink="/home">Home</a>
+        <a *ngIf="isAdmin() " class="nav-link" routerLink="/crud">Administrar</a>
         <a  *ngIf="!authService.loggedIn(); else loggedIn" class="nav-link" href="/signin">Iniciar Sesion</a>
         <a  *ngIf="!authService.loggedIn()" class="nav-link" href="/signup">Registrarse</a>
       </div>

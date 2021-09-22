@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { map} from 'rxjs/operators'
 import { Menu } from 'src/app/models/Menu';
 import {  Subject, throwError } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cards',
@@ -56,6 +57,32 @@ export class CardsComponent implements OnInit {
     }
   
 
+add(){
 
+  Swal.fire({
+    title: '¿Estás seguro?',
+    text: "Añadiremos este producto",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Si, añadir producto',
+    cancelButtonText: 'Cancelar'
+  }).then((result) => {
+
+    if (result.isConfirmed) {
+
+      Swal.fire(
+        'Agregado!',
+        'Producto agregado exitosamente!',
+        'success'
+      )
+     
+    }
+  })
+
+
+
+}
 
 }

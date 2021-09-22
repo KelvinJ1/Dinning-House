@@ -14,6 +14,7 @@ export class NavbarComponent implements OnInit {
   isAuth:boolean=false;
   role:Number=0;
   private authListenerSub!: Subscription;
+
   constructor(public authService: AuthService, private router: Router) { 
 
     this.isAuth=this.authService.getisAuthenticated();
@@ -39,6 +40,13 @@ export class NavbarComponent implements OnInit {
   }
 
   
+isAdmin(){
 
+if (this.role===0) {
+
+  return false
+}
+return true
+}
 
 }

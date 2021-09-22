@@ -1,97 +1,97 @@
-
 <div>
-<table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Id#</th>
-        <th scope="col">Producto</th>
-        <th scope="col">Precio</th>
-        <th scope="col">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let i of menu">
-        <th scope="row">{{i.id}}</th>
-        <td>{{i.titulo}}</td>
-        <td>{{i.price}}</td>
-        <td><button type="button" class="btn btn-danger"(click)='delete(i.id)'>Eliminar</button>
-          <!-- <button type="button" class="btn btn-primary" (click)='edit(i.id,i.titulo,i.description,i.URL,i.price)'>Editar</button> -->
-          <button  (click)="modal()" type="button" class="btn btn-primary">Editar</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-
-  <div *ngIf="show"   class=" m-auto box-border p-12  z-10 fixed top-0 left-0 w-full h-screen bg-gray-300 bg-opacity-40 rounded-lg">
-    <div class="flex flex-col w-11/12 sm:w-5/6 lg:w-1/2 max-w-2xl mx-auto mt-20 rounded-xl  border border-gray-300 shadow-xl">
-      <div
-        class="flex flex-row justify-between p-6 bg-white border-b border-gray-200 rounded-tl-lg rounded-tr-lg"
-      >
-        <p class="font-semibold text-gray-800">Editar producto</p>
-        <svg (click)="closeModal()"
-          class="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M6 18L18 6M6 6l12 12"
-          ></path>
-        </svg>
-      </div>
-      <form  #agregarForm='ngForm'>
-      <div class="flex flex-col px-6 py-5 bg-gray-50">
-        <p class="mb-2 font-semibold text-gray-700">Producto</p>
-        <input placeholder="Titulo"
-          type="text"
-          name="titulo"
-          class="p-2 mb-2 bg-white border border-gray-200 rounded shadow-sm h-10"
-         
-        >
-        <p class="mb-2 font-semibold text-gray-700">Descripción</p>
-        <textarea cols="30" rows="10"
-        type="text"
-        name="description"
-        class="p-2 mb-2 bg-white border border-gray-200 rounded shadow-sm h-10"
-        
-      > </textarea>
-      <p class="mb-2 font-semibold text-gray-700">URL</p>
-      <input
-      type="text"
-      name="URL" autocomplete="off"
-      class="p-2 mb-2 bg-white border border-gray-200 rounded shadow-sm h-10" 
+  <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Id#</th>
+          <th scope="col">Producto</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let i of menu">
+          <th scope="row">{{i.id}}</th>
+          <td>{{i.titulo}}</td>
+          <td>{{i.price}}</td>
+          <td><button type="button" class="btn btn-danger"(click)='delete(i.id)'>Eliminar</button>
+            <!-- <button type="button" class="btn btn-primary" (click)='edit(i.id,i.titulo,i.description,i.URL,i.price)'>Editar</button> -->
+            <button  (click)="modal(i.id,i.titulo,i.description,i.URL,i.price)" type="button" class="btn btn-primary">Editar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   
-    >
-        
-
-
-          <div class="w-full sm:w-1/2 mt-2 sm:mt-0">
-            <p class="mb-2 font-semibold text-gray-700">Price</p> 
-            <input
-              type="text"
-              name="price"
-              class="w-full p-2 bg-white border border-gray-200 rounded shadow-sm appearance-none" 
-        
-              minlength="10"
-            >
-             
-          </div>
+  
+    <div *ngIf="show"   class=" m-auto box-border p-12  z-10 fixed top-0 left-0 w-full h-screen bg-gray-300 bg-opacity-40 rounded-lg">
+      <div class="flex flex-col w-11/12 sm:w-5/6 lg:w-1/2 max-w-2xl mx-auto mt-20 rounded-xl  border border-gray-300 shadow-xl">
+        <div
+          class="flex flex-row justify-between p-6 bg-white border-b border-gray-200 rounded-tl-lg rounded-tr-lg"
+        >
+          <p class="font-semibold text-gray-800">Editar producto</p>
+          <svg (click)="closeModal()"
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
         </div>
-      
-      <div
-        class="flex flex-row items-center justify-between p-5 bg-white border-t border-gray-200 rounded-bl-lg rounded-br-lg"
+        <form (submit)="newInformation(agregarForm)" #agregarForm='ngForm'>
+        <div class="flex flex-col px-6 py-5 bg-gray-50">
+          <p class="mb-2 font-semibold text-gray-700">Producto</p>
+          <input placeholder="Titulo"
+            type="text"
+            name="titulo"
+            class="p-2 mb-2 bg-white border border-gray-200 rounded shadow-sm h-10"
+           [(ngModel)]='infoToEdit.titulo'
+          >
+          <p class="mb-2 font-semibold text-gray-700">Descripción</p>
+          <textarea cols="30" rows="10"
+          type="text"
+          name="description"
+          class="p-2 mb-2 bg-white border border-gray-200 rounded shadow-sm h-10"
+          [(ngModel)]='infoToEdit.description'
+        > </textarea>
+        <p class="mb-2 font-semibold text-gray-700">URL</p>
+        <input
+        type="text"
+        name="URL" autocomplete="off"
+        class="p-2 mb-2 bg-white border border-gray-200 rounded shadow-sm h-10"
+        [(ngModel)]='infoToEdit.URL'
       >
-        <p (click)="closeModal()" class="font-semibold text-gray-600">Cancel</p>
-        <button type="submit" class="px-4 py-2 text-white font-semibold bg-blue-500 rounded" value="Save">
-          Save
-        </button>
-      </div>
-
-  </form>
+  
+  
+  
+            <div class="w-full sm:w-1/2 mt-2 sm:mt-0">
+              <p class="mb-2 font-semibold text-gray-700">Price</p>
+              <input
+                type="text"
+                name="price"
+                class="w-full p-2 bg-white border border-gray-200 rounded shadow-sm appearance-none"
+  
+                minlength="10"
+                [(ngModel)]='infoToEdit.price'
+              >
+  
+            </div>
+          </div>
+  
+        <div
+          class="flex flex-row items-center justify-between p-5 bg-white border-t border-gray-200 rounded-bl-lg rounded-br-lg"
+        >
+          <p (click)="closeModal()" class="font-semibold text-gray-600">Cancel</p>
+          <button (click)="enviar()" type="submit" class="px-4 py-2 text-white font-semibold bg-blue-500 rounded" value="Save">
+            Save
+          </button>
+        </div>
+  
+    </form>
+    </div>
   </div>
-</div>
