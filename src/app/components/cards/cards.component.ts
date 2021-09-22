@@ -34,7 +34,7 @@ export class CardsComponent implements OnInit {
       console.log(res)
   return res.map((menu:{_id:string, titulo:string, price: string, description: string, URL:string})=>{
   console.log(menu)
-  return {
+  return { 
     id:menu._id,
     titulo:menu.titulo,
     price:menu.price,
@@ -50,10 +50,8 @@ export class CardsComponent implements OnInit {
   }
   
   
-    getMenuUpdateListener(){
-  
+  getMenuUpdateListener(){
   return this.menuUpdated.asObservable();
-  
     }
   
 

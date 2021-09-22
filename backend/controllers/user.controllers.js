@@ -43,5 +43,3 @@ usersControllers.signin = async (req, res) => {
 };
 
 module.exports = usersControllers;
-
-

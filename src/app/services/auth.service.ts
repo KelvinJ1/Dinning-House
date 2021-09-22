@@ -25,8 +25,7 @@ export class AuthService {
     }
 
   getisAuthenticated(){
-    return this.isAuthenticated;
-    
+    return this.isAuthenticated;  
     }
 
 
@@ -74,7 +73,6 @@ export class AuthService {
     this.isAuthenticated=true
     this.authStatusListener.next(true)
     this.router.navigate(["/home"])
-
   }
 
 

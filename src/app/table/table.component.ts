@@ -1,8 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MenuService } from 'src/app/services/menu/menu.service';
-import { CRUDComponent } from 'src/app/components/crud/crud.component';
 import { Subscription } from 'rxjs';
-import { Auth } from 'src/app/models/Auth';
 import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
@@ -70,7 +68,7 @@ export class TableComponent implements OnInit {
 
     delete(id:string){
 
-      this.menuService.delete(id)
+      
       Swal.fire({
         title: '¿Estás seguro?',
         text: "Eliminaremos este producto",
@@ -83,7 +81,7 @@ export class TableComponent implements OnInit {
       }).then((result) => {
     
         if (result.isConfirmed) {
-    
+          this.menuService.delete(id)
           Swal.fire(
             'Perfecto!',
             'Producto eliminado exitosamente!',
@@ -93,7 +91,6 @@ export class TableComponent implements OnInit {
         }
       })
     
-
     }
 
     edit(id: string,titulo: string,description:string,URL: string,price:string){
